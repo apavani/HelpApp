@@ -12,9 +12,17 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
 
     var locationManager : CLLocationManager!
     
-    var latitudeData: [Float] = []
-    var longitudeData: [Float] = []
-    var distanceData: [Float] = []
+    @IBOutlet var Dialogue: UITextView!
+
+    
+    struct UserInfo {
+        var userID: String!
+        var latitude: Float!
+        var longitude: Float!
+        var distance: Float!
+    }
+    
+    var users:  [UserInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,23 +49,31 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             query.findObjectsInBackgroundWithBlock {
                 (objects: [AnyObject]!, error:NSError!) -> Void in
                 if error == nil {
-                    if (self.latitudeData.count > 0 || self.longitudeData.count > 0)
+                    if (self.users.count>0)
                     {
-                        self.latitudeData.removeAll(keepCapacity: false)
-                        self.longitudeData.removeAll(keepCapacity: false)
-
+                     self.users.removeAll(keepCapacity: false)
                     }
-                    
+                    self.Dialogue.text=""
                     for object in objects{
                         var longitude: Float = object.objectForKey("Longitude") as Float
-                        self.longitudeData.append(longitude)
                         
                         var latitude: Float = object.objectForKey("Latitude") as Float
-                        self.latitudeData.append(latitude)
                         
-                        let distanceCalc = DistanceCalculator(lat1: 54.3 , lat2: latitude, lon1: 65.43 , lon2: longitude)
+                        var userID : String = object.objectForKey("DeviceID") as String
                         
-                        self.distanceData.append(distanceCalc.calculateDistance())
+                        let distanceCalc = DistanceCalculator(lat1: 40 , lat2: latitude, lon1: 36 , lon2: longitude)
+                        
+                        var distance: Float = distanceCalc.calculateDistance()
+                        
+                        var userdata: UserInfo = UserInfo(userID: userID, latitude: latitude, longitude: longitude, distance: distance)
+                        
+                        self.users.append(userdata)
+                        var text:String!
+                        
+                        for user in self.users {
+                            text = self.Dialogue.text + user.userID + ":" + "\(user.distance)" + "\n"
+                        }
+                        self.Dialogue.text = text
                     }
                     
                 }

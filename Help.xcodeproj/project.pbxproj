@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14B5F1EF19E0DCBA00C8B826 /* Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F1EE19E0DCBA00C8B826 /* Header.m */; };
+		14B5F1F419E0DD5500C8B826 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F119E0DD5500C8B826 /* Bolts.framework */; };
+		14B5F1F519E0DD5500C8B826 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F219E0DD5500C8B826 /* Parse.framework */; };
+		14B5F1F619E0DD5500C8B826 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */; };
 		14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */; };
 		B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA719D8BBA800979946 /* AppDelegate.swift */; };
 		B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA919D8BBA800979946 /* FirstViewController.swift */; };
@@ -24,9 +28,6 @@
 		B4DCC8F919E0AF1400AAC670 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC8F819E0AF1400AAC670 /* Security.framework */; };
 		B4DCC8FB19E0AF1E00AAC670 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC8FA19E0AF1E00AAC670 /* StoreKit.framework */; };
 		B4DCC8FD19E0AF2700AAC670 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC8FC19E0AF2700AAC670 /* SystemConfiguration.framework */; };
-		B4DCC90719E0B06F00AAC670 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC90419E0B06F00AAC670 /* Bolts.framework */; };
-		B4DCC90819E0B06F00AAC670 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC90519E0B06F00AAC670 /* Parse.framework */; };
-		B4DCC90919E0B06F00AAC670 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC90619E0B06F00AAC670 /* ParseFacebookUtils.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14B5F1EE19E0DCBA00C8B826 /* Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Header.m; sourceTree = "<group>"; };
+		14B5F1F119E0DD5500C8B826 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		14B5F1F219E0DD5500C8B826 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Help-Bridging-Header.h"; sourceTree = "<group>"; };
 		14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate_Distance.swift; sourceTree = "<group>"; };
 		B4336CA219D8BBA800979946 /* Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4336CA619D8BBA800979946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,10 +67,6 @@
 		B4DCC8F819E0AF1400AAC670 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B4DCC8FA19E0AF1E00AAC670 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B4DCC8FC19E0AF2700AAC670 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B4DCC90019E0B00800AAC670 /* Help-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Help-Bridging-Header.h"; sourceTree = "<group>"; };
-		B4DCC90419E0B06F00AAC670 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		B4DCC90519E0B06F00AAC670 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		B4DCC90619E0B06F00AAC670 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,11 +82,11 @@
 				B4DCC8F319E0AEF400AAC670 /* libz.dylib in Frameworks */,
 				B4DCC8EB19E0AEA400AAC670 /* CoreLocation.framework in Frameworks */,
 				B4DCC8F119E0AEDA00AAC670 /* CoreGraphics.framework in Frameworks */,
-				B4DCC90719E0B06F00AAC670 /* Bolts.framework in Frameworks */,
+				14B5F1F419E0DD5500C8B826 /* Bolts.framework in Frameworks */,
 				B4DCC8EF19E0AECF00AAC670 /* CFNetwork.framework in Frameworks */,
-				B4DCC90819E0B06F00AAC670 /* Parse.framework in Frameworks */,
+				14B5F1F519E0DD5500C8B826 /* Parse.framework in Frameworks */,
 				B4DCC8ED19E0AEB500AAC670 /* AudioToolbox.framework in Frameworks */,
-				B4DCC90919E0B06F00AAC670 /* ParseFacebookUtils.framework in Frameworks */,
+				14B5F1F619E0DD5500C8B826 /* ParseFacebookUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,10 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14B5F1F019E0DD5500C8B826 /* parse-library-1.4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				14B5F1F119E0DD5500C8B826 /* Bolts.framework */,
+				14B5F1F219E0DD5500C8B826 /* Parse.framework */,
+				14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */,
+			);
+			name = "parse-library-1.4.0";
+			path = "../../../Downloads/parse-library-1.4.0";
+			sourceTree = "<group>";
+		};
 		B4336C9919D8BBA800979946 = {
 			isa = PBXGroup;
 			children = (
-				B4DCC90319E0B06F00AAC670 /* parse-library-1.4.0 */,
+				14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */,
+				14B5F1F019E0DD5500C8B826 /* parse-library-1.4.0 */,
+				14B5F1EE19E0DCBA00C8B826 /* Header.m */,
 				B4DCC8FC19E0AF2700AAC670 /* SystemConfiguration.framework */,
 				B4DCC8FA19E0AF1E00AAC670 /* StoreKit.framework */,
 				B4DCC8F819E0AF1400AAC670 /* Security.framework */,
@@ -115,7 +130,6 @@
 				B4336CA419D8BBA800979946 /* Help */,
 				B4336CBC19D8BBA800979946 /* HelpTests */,
 				B4336CA319D8BBA800979946 /* Products */,
-				B4DCC90019E0B00800AAC670 /* Help-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,17 +179,6 @@
 				B4336CBE19D8BBA800979946 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B4DCC90319E0B06F00AAC670 /* parse-library-1.4.0 */ = {
-			isa = PBXGroup;
-			children = (
-				B4DCC90419E0B06F00AAC670 /* Bolts.framework */,
-				B4DCC90519E0B06F00AAC670 /* Parse.framework */,
-				B4DCC90619E0B06F00AAC670 /* ParseFacebookUtils.framework */,
-			);
-			name = "parse-library-1.4.0";
-			path = "../../../Downloads/parse-library-1.4.0";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B5F1EF19E0DCBA00C8B826 /* Header.m in Sources */,
 				14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */,
 				B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */,
 				B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */,
@@ -407,6 +411,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/demo/Downloads/parse-library-1.4.0",
+					"/Users/liqihui/Downloads/parse-library-1.4.0",
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -424,6 +429,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/demo/Downloads/parse-library-1.4.0",
+					"/Users/liqihui/Downloads/parse-library-1.4.0",
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
