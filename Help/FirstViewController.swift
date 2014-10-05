@@ -16,6 +16,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
         //var addLocation : PFObject = PFObject(className: "PeopleLocation")
         
         //self.locationManager = CLLocationManager()
@@ -28,6 +29,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         //addLocation["Longitude"] = 50.22014
        // addLocation.saveInBackground()
         
+        let distanceCalculator = DistanceCalculator(lat1: 54.3 , lat2: 72.11 , lon1: 65.43 , lon2: -45.21)
+        distanceCalculator.calculateDistance()
+
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
