@@ -11,8 +11,11 @@ import UIKit
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
 
     var locationManager : CLLocationManager!
-    var latitude: String!
-    var longitude: String!
+    
+    var latitudeData: [Float] = []
+    var longitudeData: [Float] = []
+    var distanceData: [Float] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,9 +31,36 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         //addLocation["Latitude"] = 40.50
         //addLocation["Longitude"] = 50.22014
        // addLocation.saveInBackground()
-        
-        let distanceCalculator = DistanceCalculator(lat1: 54.3 , lat2: 72.11 , lon1: 65.43 , lon2: -45.21)
-        distanceCalculator.calculateDistance()
+        loadNewData()
+    }
+
+    
+        func loadNewData()
+        {
+            var query = PFQuery(className: "PeopleLocation")
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]!, error:NSError!) -> Void in
+                if error == nil {
+                    if (self.latitudeData.count > 0 || self.longitudeData.count > 0)
+                    {
+                        self.latitudeData.removeAll(keepCapacity: false)
+                        self.longitudeData.removeAll(keepCapacity: false)
+
+                    }
+                    
+                    for object in objects{
+                        var longitude: Float = object.objectForKey("Longitude") as Float
+                        self.longitudeData.append(longitude)
+                        
+                        var latitude: Float = object.objectForKey("Latitude") as Float
+                        self.latitudeData.append(latitude)
+                        
+                        let distanceCalc = DistanceCalculator(lat1: 54.3 , lat2: latitude, lon1: 65.43 , lon2: longitude)
+                        
+                        self.distanceData.append(distanceCalc.calculateDistance())
+                    }
+                    
+                }
 
     }
 
@@ -43,18 +73,19 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         var coord : CLLocationCoordinate2D = loc.coordinate
         
         // Set the location label to the coordinates of location.
-        latitude = "\(coord.latitude)"
-        longitude = "\(coord.longitude)"
+        var myLatitude: String = "\(coord.latitude)"
+        var myLongitude: String = "\(coord.longitude)"
         
         // Tell location manager to stop collecting and updating location.
         self.locationManager.stopUpdatingLocation()
-    }
+            }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    //override func didReceiveMemoryWarning() {
+      //  super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
+    //}
 
 
+}
 }
 
