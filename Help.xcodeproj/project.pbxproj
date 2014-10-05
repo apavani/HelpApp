@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */; };
 		B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA719D8BBA800979946 /* AppDelegate.swift */; };
 		B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA919D8BBA800979946 /* FirstViewController.swift */; };
 		B4336CAF19D8BBA800979946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4336CAD19D8BBA800979946 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate_Distance.swift; sourceTree = "<group>"; };
 		B4336CA219D8BBA800979946 /* Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4336CA619D8BBA800979946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4336CA719D8BBA800979946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				B4336CB019D8BBA800979946 /* Images.xcassets */,
 				B4336CB219D8BBA800979946 /* LaunchScreen.xib */,
 				B4336CA519D8BBA800979946 /* Supporting Files */,
+				14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */,
 				B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */,
 				B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */,
 			);

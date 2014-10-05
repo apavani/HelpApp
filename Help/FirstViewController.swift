@@ -13,6 +13,8 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let distanceCalculator = DistanceCalculator(lat1: 54.3 , lat2: 72.11 , lon1: 65.43 , lon2: -45.21)
+        distanceCalculator.calculateDistance()
     }
 
     override func didReceiveMemoryWarning() {
