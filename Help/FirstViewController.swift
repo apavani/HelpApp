@@ -6,11 +6,16 @@
 //  Copyright (c) 2014 Adarshkumar Pavani. All rights reserved.
 //
 
+import CoreLocation
 import UIKit
 
-class FirstViewController: UIViewController, CLLocationManagerDelegate {
+class FirstViewController: UITableViewController, CLLocationManagerDelegate {
+    @IBOutlet var name: UILabel!
 
     var locationManager : CLLocationManager!
+    var myLatitude : CLLocationDegrees!
+    var myLongitude : CLLocationDegrees!
+    var myName : String!
     
     @IBOutlet var Dialogue: UITextView!
 
@@ -24,24 +29,23 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     var users:  [UserInfo] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        //var addLocation : PFObject = PFObject(className: "PeopleLocation")
-        
-        //self.locationManager = CLLocationManager()
-        //self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //self.locationManager.delegate = self
-        
-        
-        //Setting other variables in the PFObject
-        //addLocation["Latitude"] = 40.50
-        //addLocation["Longitude"] = 50.22014
-       // addLocation.saveInBackground()
+        println("Test")
+        self.locationManager = CLLocationManager()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.delegate = self
+        self.Dialogue.layer.borderWidth = 0.1
         loadNewData()
+        self.name.text = self.myName
     }
 
+    override func viewDidAppear(animated: Bool) {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
+    }
     
         func loadNewData()
         {
@@ -77,7 +81,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                     }
                     
                 }
-
+            }
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -88,20 +92,60 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         // The location stored as a coordinate.
         var coord : CLLocationCoordinate2D = loc.coordinate
         
-        // Set the location label to the coordinates of location.
-        var myLatitude: String = "\(coord.latitude)"
-        var myLongitude: String = "\(coord.longitude)"
-        
+        // Set the coordinates of location.
+        self.myLatitude = coord.latitude
+        self.myLongitude = coord.longitude
+        println(self.myLatitude)
+        println(self.myLongitude)
         // Tell location manager to stop collecting and updating location.
         self.locationManager.stopUpdatingLocation()
-            }
+        
+        //Setting other variables in the PFObject
+        var addLocation : PFObject = PFObject(className: "PeopleLocation")
+        addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
+        addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
+        
+        
+        let deviceID =  IdentityGenerator()
+        
+        var isRegistered : Bool = isDeviceRegistered(deviceID: deviceID.identifierForVendor.description)
+        
+        if(!isRegistered)
+        {
+        addLocation["DeviceID"] = deviceID.identifierForVendor.UUIDString as String
+        }
+        
+        else
+        {
+            //Logic to update the co-ordinates in the corresponding row where the device ID is found
+        }
+        addLocation.saveInBackground()
+        
+    }
     
-    //override func didReceiveMemoryWarning() {
-      //  super.didReceiveMemoryWarning()
+    override func didReceiveMemoryWarning() {
+       super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    //}
+    }
 
 
-}
+            func isDeviceRegistered(deviceID ID:String!) -> Bool{
+                
+            var flag : Bool = false
+            var query = PFQuery(className: "PeopleLocation")
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]!, error:NSError!) -> Void in
+                if error == nil {
+                    for object in objects{
+                        var deviceID: String = object.objectForKey("DeviceID") as String
+                        if(ID==deviceID)
+                        {
+                        flag = true
+                        }
+                    }
+                }
+                }
+                return flag
+    }
 }
 
