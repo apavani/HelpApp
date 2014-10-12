@@ -24,6 +24,7 @@ class DistanceCalculator{
     
         }
     
+    // Borrowed the code from a javascript reference online.
     func calculateDistance() ->Float{
         let R:Float = 6371.00// km
         var φ1 = GLKMathDegreesToRadians(lat1)
