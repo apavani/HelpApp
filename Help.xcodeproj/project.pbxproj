@@ -111,7 +111,7 @@
 				14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */,
 			);
 			name = "parse-library-1.4.0";
-			path = "../../../Downloads/parse-library-1.4.0";
+			path = "../../Downloads/parse-library-1.4.0";
 			sourceTree = "<group>";
 		};
 		B4336C9919D8BBA800979946 = {
