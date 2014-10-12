@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14B5F1F419E0DD5500C8B826 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F119E0DD5500C8B826 /* Bolts.framework */; };
-		14B5F1F519E0DD5500C8B826 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F219E0DD5500C8B826 /* Parse.framework */; };
-		14B5F1F619E0DD5500C8B826 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */; };
 		14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */; };
+		738EE64819EB47E700B06DA8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64519EB47E700B06DA8 /* Parse.framework */; };
+		738EE64919EB47E700B06DA8 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */; };
+		738EE64A19EB47E700B06DA8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64719EB47E700B06DA8 /* Bolts.framework */; };
+		73F7C2DB19EB452C003123C8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC8F619E0AF0A00AAC670 /* QuartzCore.framework */; };
 		B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA719D8BBA800979946 /* AppDelegate.swift */; };
 		B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA919D8BBA800979946 /* FirstViewController.swift */; };
 		B4336CAF19D8BBA800979946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4336CAD19D8BBA800979946 /* Main.storyboard */; };
@@ -43,11 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		14B5F1F119E0DD5500C8B826 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		14B5F1F219E0DD5500C8B826 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Help-Bridging-Header.h"; sourceTree = "<group>"; };
 		14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate_Distance.swift; sourceTree = "<group>"; };
+		738EE64519EB47E700B06DA8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		738EE64719EB47E700B06DA8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		B4336CA219D8BBA800979946 /* Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4336CA619D8BBA800979946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4336CA719D8BBA800979946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,18 +79,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4DCC8FD19E0AF2700AAC670 /* SystemConfiguration.framework in Frameworks */,
-				B4DCC8FB19E0AF1E00AAC670 /* StoreKit.framework in Frameworks */,
 				B4DCC8F919E0AF1400AAC670 /* Security.framework in Frameworks */,
+				73F7C2DB19EB452C003123C8 /* QuartzCore.framework in Frameworks */,
+				738EE64919EB47E700B06DA8 /* ParseFacebookUtils.framework in Frameworks */,
 				B4DCC8F519E0AF0000AAC670 /* MobileCoreServices.framework in Frameworks */,
 				B4DCC8F319E0AEF400AAC670 /* libz.dylib in Frameworks */,
 				B4DCC8EB19E0AEA400AAC670 /* CoreLocation.framework in Frameworks */,
 				B4DCC8F119E0AEDA00AAC670 /* CoreGraphics.framework in Frameworks */,
-				14B5F1F419E0DD5500C8B826 /* Bolts.framework in Frameworks */,
+				738EE64A19EB47E700B06DA8 /* Bolts.framework in Frameworks */,
+				738EE64819EB47E700B06DA8 /* Parse.framework in Frameworks */,
 				B4DCC8EF19E0AECF00AAC670 /* CFNetwork.framework in Frameworks */,
-				14B5F1F519E0DD5500C8B826 /* Parse.framework in Frameworks */,
+				B4DCC8FD19E0AF2700AAC670 /* SystemConfiguration.framework in Frameworks */,
+				B4DCC8FB19E0AF1E00AAC670 /* StoreKit.framework in Frameworks */,
 				B4DCC8ED19E0AEB500AAC670 /* AudioToolbox.framework in Frameworks */,
-				14B5F1F619E0DD5500C8B826 /* ParseFacebookUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,22 +105,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14B5F1F019E0DD5500C8B826 /* parse-library-1.4.0 */ = {
+		738EE64419EB47E700B06DA8 /* parse-library-1.4.1 */ = {
 			isa = PBXGroup;
 			children = (
-				14B5F1F119E0DD5500C8B826 /* Bolts.framework */,
-				14B5F1F219E0DD5500C8B826 /* Parse.framework */,
-				14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */,
+				738EE64519EB47E700B06DA8 /* Parse.framework */,
+				738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */,
+				738EE64719EB47E700B06DA8 /* Bolts.framework */,
 			);
-			name = "parse-library-1.4.0";
-			path = "../../Downloads/parse-library-1.4.0";
+			name = "parse-library-1.4.1";
+			path = "../../Downloads/parse-library-1.4.1";
 			sourceTree = "<group>";
 		};
 		B4336C9919D8BBA800979946 = {
 			isa = PBXGroup;
 			children = (
+				738EE64419EB47E700B06DA8 /* parse-library-1.4.1 */,
 				14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */,
-				14B5F1F019E0DD5500C8B826 /* parse-library-1.4.0 */,
 				B4DCC8FC19E0AF2700AAC670 /* SystemConfiguration.framework */,
 				B4DCC8FA19E0AF1E00AAC670 /* StoreKit.framework */,
 				B4DCC8F819E0AF1400AAC670 /* Security.framework */,
@@ -420,6 +422,7 @@
 					"$(inherited)",
 					"/Users/demo/Downloads/parse-library-1.4.0",
 					"/Users/liqihui/Downloads/parse-library-1.4.0",
+					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.4.1",
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -438,6 +441,7 @@
 					"$(inherited)",
 					"/Users/demo/Downloads/parse-library-1.4.0",
 					"/Users/liqihui/Downloads/parse-library-1.4.0",
+					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.4.1",
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
