@@ -9,11 +9,13 @@
 import CoreLocation
 import UIKit
 
-class FirstViewController: UIViewController, CLLocationManagerDelegate {
+class FirstViewController: UITableViewController, CLLocationManagerDelegate {
+    @IBOutlet var name: UILabel!
 
     var locationManager : CLLocationManager!
     var myLatitude : CLLocationDegrees!
     var myLongitude : CLLocationDegrees!
+    var myName : String!
     
     @IBOutlet var Dialogue: UITextView!
 
@@ -37,6 +39,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.delegate = self
         self.Dialogue.layer.borderWidth = 0.1
         loadNewData()
+        self.name.text = self.myName
     }
 
     override func viewDidAppear(animated: Bool) {
