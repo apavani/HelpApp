@@ -27,7 +27,7 @@ class AddMessageViewController: UIViewController {
             if((object.objectForKey("DeviceID") as? String) == self.myID)
             {
                 self.addMessage = object as PFObject
-                self.addMessage["DeviceID"] = self.myID
+                self.addMessage["Message"] = self.messageText.text
                 self.addMessage["newCount"] = ((object.objectForKey("newCount") as Int)+1)
                 self.addMessage.saveInBackgroundWithBlock{ (Bool, NSError) -> Void in
                 //self.navigationController?.popViewControllerAnimated(true)
