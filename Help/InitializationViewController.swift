@@ -18,7 +18,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
     var myLatitude : CLLocationDegrees!
     var myLongitude : CLLocationDegrees!
     var myObject : PFObject!
-    var timer : NSTimer!
+    //var timer : NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
     }
     
     override func viewDidAppear(animated: Bool) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("startUpdatingLocation"), userInfo: nil, repeats: false)
+     NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("startUpdatingLocation"), userInfo: nil, repeats: false)
     }
 
     override func didReceiveMemoryWarning() {

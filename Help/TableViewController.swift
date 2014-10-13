@@ -13,10 +13,12 @@ class TableViewController: UITableViewController, UITableViewDataSource {
 
     var myLatitude : Float!
     var myLongitude : Float!
+    var timer : NSTimer!
     
     var users : [UserInfo] = []
     var timeformatter = NSDateFormatter()
     var usersWithinRange : [UserInfo] = []
+    var firstTime : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +29,13 @@ class TableViewController: UITableViewController, UITableViewDataSource {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.timeformatter.dateFormat = "hh:mm"
-        loadNewData()
+        
+         self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("loadNewData"), userInfo: nil, repeats: true)
     }
 
-    
+    override func viewDidDisappear(animated: Bool) {
+        timer.invalidate()
+    }
     func loadNewData()
     {
         
@@ -44,17 +49,28 @@ class TableViewController: UITableViewController, UITableViewDataSource {
                     
                         if(distance < 100)
                         {
-                            var oldTimeStamp : String
-                            if(object.objectForKey("oldUpdatedAt") == nil)
+                            var oldCount : Int
+                            if(object.objectForKey("oldCount") == nil)
                             {
-                                oldTimeStamp = ""
+                                oldCount = 0
                             }
                             else
                             {
-                            oldTimeStamp = object.objectForKey("oldUpdatedAt") as String
+                            oldCount = object.objectForKey("oldCount") as Int
                             }
                             
-                            if(oldTimeStamp != object.updatedAt)
+                            var newCount : Int
+                            
+                            if(object.objectForKey("newCount") == nil)
+                            {
+                                newCount = 0
+                            }
+                            else
+                            {
+                                newCount = object.objectForKey("newCount") as Int
+                            }
+                            
+                            if((oldCount != newCount) || self.firstTime)
                             {
                             var userName : String = object.objectForKey("Name") as String
                             var userMacID : String =  object.objectForKey("DeviceID") as String
@@ -69,16 +85,31 @@ class TableViewController: UITableViewController, UITableViewDataSource {
                             var latitude : Float = object.objectForKey("Latitude") as Float
                             var longitude : Float = object.objectForKey("Longitude") as Float
                                 
-                                oldTimeStamp = self.timeformatter.stringFromDate(object.updatedAt)
-                                 var updateTime : PFObject = object as PFObject
-                                updateTime["oldUpdatedAt"] = object.updatedAt
-                                updateTime.saveInBackground()
+                                if(self.firstTime)
+                                {
+                                    var updateCount : PFObject = PFObject(className: "PeopleLocation")
+                                    updateCount = object as PFObject
+                                    updateCount["oldCount"] = oldCount
+                                    updateCount["newCount"] = newCount
+                                    updateCount.saveInBackground()
+                                }
+                                else
+                                {
+                                var updateCount : PFObject = PFObject(className: "PeopleLocation")
+                                updateCount = object as PFObject
+                                updateCount["oldCount"] = object.objectForKey("newCount") as Int
+                                updateCount.saveInBackground()
+                                }
                     
-                                var newUser : UserInfo = UserInfo(name: userName, macID: userMacID, distance: distance, oldTimeStamp: oldTimeStamp, timeStamp: messageTimeStamp, messageText: userMessage, latitude: object.objectForKey("Latitude") as Float, longitude: object.objectForKey("Longitude") as Float)
+                                var newUser : UserInfo = UserInfo(name: userName, macID: userMacID, distance: distance, timeStamp: messageTimeStamp, messageText: userMessage, latitude: object.objectForKey("Latitude") as Float, longitude: object.objectForKey("Longitude") as Float, oldCount : oldCount, newCount : newCount)
+                                if(!self.firstTime)
+                                {
                                 self.users.append(newUser)
+                                }
                             }
                     }
                 }
+                self.firstTime = false
                 self.tableView.reloadData()
             }
         }

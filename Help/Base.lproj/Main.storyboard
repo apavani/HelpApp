@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Initialization View Controller-->
+        <!--Name-->
         <scene sceneID="Rk4-mq-Cmj">
             <objects>
                 <viewController id="5sG-OZ-7I0" customClass="InitializationViewController" customModule="Help" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,7 +43,7 @@
                             <outletCollection property="gestureRecognizers" destination="dcI-Qo-4d2" appends="YES" id="a9W-ol-BlD"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="t8E-iX-Ay9"/>
+                    <navigationItem key="navigationItem" title="Name" id="t8E-iX-Ay9"/>
                     <connections>
                         <outlet property="initializationView" destination="GTd-nZ-HdS" id="O9M-Ad-vn5"/>
                         <outlet property="name" destination="5Ge-mr-8DZ" id="f0s-jA-rYb"/>
@@ -54,7 +54,7 @@
             </objects>
             <point key="canvasLocation" x="807" y="-307"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Messages-->
         <scene sceneID="wnM-xS-wNi">
             <objects>
                 <tableViewController id="soZ-Np-4sH" customClass="TableViewController" customModule="Help" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,38 +95,75 @@
                                     <outlet property="timeStamp" destination="rUi-6i-FIN" id="4kO-YJ-NXo"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ztZ-1c-hkW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ztZ-1c-hkW" id="sCz-FS-PVh">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XVo-K1-r8g">
-                                            <rect key="frame" x="8" y="7" width="260" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfl-BT-PDD">
-                                            <rect key="frame" x="276" y="6" width="32" height="30"/>
-                                            <state key="normal" title="Help">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="soZ-Np-4sH" id="mjh-D5-ZwK"/>
                             <outlet property="delegate" destination="soZ-Np-4sH" id="eV1-8a-Y78"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hZN-SI-WOj"/>
+                    <navigationItem key="navigationItem" title="Messages" id="hZN-SI-WOj">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="nRd-Va-WZl">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jxM-hb-mOy">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <connections>
+                                <segue destination="UD7-rE-mcc" kind="push" identifier="toAddMessage" id="uP6-gB-Z3z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSK-HN-Vnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="aEG-To-soa"/>
             </objects>
             <point key="canvasLocation" x="1226" y="-334"/>
+        </scene>
+        <!--Send Message-->
+        <scene sceneID="q2S-L9-eLf">
+            <objects>
+                <viewController id="UD7-rE-mcc" customClass="AddMessageViewController" customModule="Help" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gWW-wx-Yuv"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Pk-zh-QmQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bgs-L0-6Ff">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLn-m9-38b">
+                                <rect key="frame" x="142" y="247" width="36" height="30"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendMessageButton:" destination="UD7-rE-mcc" eventType="touchUpInside" id="KK5-71-Pec"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwu-db-3nd">
+                                <rect key="frame" x="125" y="86" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3iv-rs-fnt">
+                                <rect key="frame" x="16" y="140" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Send Message" id="kZH-Zn-q46"/>
+                    <connections>
+                        <outlet property="messageText" destination="3iv-rs-fnt" id="i56-kv-zmy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lEc-MZ-37e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="-334"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aQN-FK-qY5">

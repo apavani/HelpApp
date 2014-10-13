@@ -17,18 +17,20 @@ class UserInfo{
     var messageText : String
     var latitude : Float
     var longitude : Float
-    var oldTimeStamp : String = ""
+    var oldCount : Int
+    var newCount : Int
     
-    init(name: String, macID: String, distance: Float, oldTimeStamp : String, timeStamp: String, messageText: String, latitude: Float, longitude: Float)
+    init(name: String, macID: String, distance: Float,  timeStamp: String, messageText: String, latitude: Float, longitude: Float, oldCount : Int, newCount : Int)
     {
         self.name = name
         self.macID = macID
         self.distance = distance
         self.timeStamp = timeStamp
-        self.oldTimeStamp = oldTimeStamp
         self.messageText = messageText
         self.latitude = latitude
         self.longitude = longitude
+        self.oldCount = oldCount
+        self.newCount = newCount
     }
 
 }
