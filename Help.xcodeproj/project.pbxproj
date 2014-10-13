@@ -12,6 +12,7 @@
 		738EE64919EB47E700B06DA8 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */; };
 		738EE64A19EB47E700B06DA8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64719EB47E700B06DA8 /* Bolts.framework */; };
 		738EE64C19EB597B00B06DA8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EE64B19EB597B00B06DA8 /* TableViewController.swift */; };
+		738EE64E19EB808F00B06DA8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EE64D19EB808F00B06DA8 /* UserInfo.swift */; };
 		73F7C2DB19EB452C003123C8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC8F619E0AF0A00AAC670 /* QuartzCore.framework */; };
 		B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA719D8BBA800979946 /* AppDelegate.swift */; };
 		B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA919D8BBA800979946 /* FirstViewController.swift */; };
@@ -51,6 +52,7 @@
 		738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		738EE64719EB47E700B06DA8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		738EE64B19EB597B00B06DA8 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		738EE64D19EB808F00B06DA8 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		B4336CA219D8BBA800979946 /* Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4336CA619D8BBA800979946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4336CA719D8BBA800979946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				B4336CA719D8BBA800979946 /* AppDelegate.swift */,
 				B4336CA919D8BBA800979946 /* FirstViewController.swift */,
+				738EE64D19EB808F00B06DA8 /* UserInfo.swift */,
 				B4336CAD19D8BBA800979946 /* Main.storyboard */,
 				738EE64B19EB597B00B06DA8 /* TableViewController.swift */,
 				B4F384C119EB076C0047AAF6 /* TableViewCell.swift */,
@@ -296,6 +299,7 @@
 				738EE64C19EB597B00B06DA8 /* TableViewController.swift in Sources */,
 				B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */,
 				B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */,
+				738EE64E19EB808F00B06DA8 /* UserInfo.swift in Sources */,
 				B4F384C219EB076C0047AAF6 /* TableViewCell.swift in Sources */,
 				B4F487D019EAF0C500D5C582 /* InitializationViewController.swift in Sources */,
 				B4CDC17619E9B3B70007A966 /* IdentityGenerator.swift in Sources */,

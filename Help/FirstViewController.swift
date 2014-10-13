@@ -18,14 +18,6 @@ class FirstViewController: UITableViewController, CLLocationManagerDelegate {
     var myName : String!
     
     @IBOutlet var Dialogue: UITextView!
-
-    
-    struct UserInfo {
-        var userID: String!
-        var latitude: Float!
-        var longitude: Float!
-        var distance: Float!
-    }
     
     var users:  [UserInfo] = []
     

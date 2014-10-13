@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Foundation
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, UITableViewDataSource {
 
+    var users : [UserInfo] = []
+    var timeformatter = NSDateFormatter()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,8 +23,35 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.timeformatter.dateFormat = "hh:mm"
+        loadNewData()
     }
 
+    
+    func loadNewData()
+    {
+        var query = PFQuery(className: "PeopleLocation")
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error:NSError!) -> Void in
+            if error == nil{
+                if(self.users.count>0)
+                {
+                    self.users.removeAll(keepCapacity: false)
+                }
+                
+                for object in objects{
+                    var userName : String? = object.objectForKey("Name") as? String!
+                    var userMacID : String =  object.objectForKey("DeviceID") as String
+                    var messageTimeStamp : String = self.timeformatter.stringFromDate(object.updatedAt)
+                    var userMessage : String = object.objectForKey("Message") as String
+                    var newUser : UserInfo = UserInfo(name: userName!, macID: userMacID, distance: 0, timeStamp: messageTimeStamp, messageText: userMessage)
+                    
+                    self.users.append(newUser)
+                }
+                self.tableView.reloadData()
+            }
+        }
+    
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -27,27 +59,23 @@ class TableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
-
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return self.users.count
     }
 
-    /*
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("chatMessage") as? TableViewCell ?? TableViewCell()
+        var user = self.users[indexPath.row]
+        
+        cell.nameField.text = user.name
+        cell.timeStamp.text = user.timeStamp
+        cell.messageText.text = user.messageText
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
