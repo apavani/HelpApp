@@ -11,9 +11,12 @@ import Foundation
 
 class TableViewController: UITableViewController, UITableViewDataSource {
 
+    var myLatitude : Float!
+    var myLongitude : Float!
+    
     var users : [UserInfo] = []
     var timeformatter = NSDateFormatter()
-    
+    var usersWithinRange : [UserInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +33,51 @@ class TableViewController: UITableViewController, UITableViewDataSource {
     
     func loadNewData()
     {
+        
         var query = PFQuery(className: "PeopleLocation")
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error:NSError!) -> Void in
             if error == nil{
-                if(self.users.count>0)
-                {
-                    self.users.removeAll(keepCapacity: false)
-                }
                 
                 for object in objects{
-                    var userName : String? = object.objectForKey("Name") as? String!
-                    var userMacID : String =  object.objectForKey("DeviceID") as String
-                    var messageTimeStamp : String = self.timeformatter.stringFromDate(object.updatedAt)
-                    var userMessage : String = object.objectForKey("Message") as String
-                    var newUser : UserInfo = UserInfo(name: userName!, macID: userMacID, distance: 0, timeStamp: messageTimeStamp, messageText: userMessage)
+                    let distanceCalc = DistanceCalculator(lat1: self.myLatitude, lat2: object.objectForKey("Latitude") as Float, lon1: self.myLongitude , lon2: object.objectForKey("Longitude") as Float)
+                    var distance : Float = distanceCalc.calculateDistance()
                     
-                    self.users.append(newUser)
+                        if(distance < 100)
+                        {
+                            var oldTimeStamp : String
+                            if(object.objectForKey("oldUpdatedAt") == nil)
+                            {
+                                oldTimeStamp = ""
+                            }
+                            else
+                            {
+                            oldTimeStamp = object.objectForKey("oldUpdatedAt") as String
+                            }
+                            
+                            if(oldTimeStamp != object.updatedAt)
+                            {
+                            var userName : String = object.objectForKey("Name") as String
+                            var userMacID : String =  object.objectForKey("DeviceID") as String
+                            var messageTimeStamp : String = self.timeformatter.stringFromDate(object.updatedAt)
+                            
+                            var userMessage : String
+                            if(object.objectForKey("Message") == nil)
+                            {userMessage = ""}
+                            else
+                            {userMessage = object.objectForKey("Message") as String}
+                            
+                            var latitude : Float = object.objectForKey("Latitude") as Float
+                            var longitude : Float = object.objectForKey("Longitude") as Float
+                                
+                                oldTimeStamp = self.timeformatter.stringFromDate(object.updatedAt)
+                                 var updateTime : PFObject = object as PFObject
+                                updateTime["oldUpdatedAt"] = object.updatedAt
+                                updateTime.saveInBackground()
+                    
+                                var newUser : UserInfo = UserInfo(name: userName, macID: userMacID, distance: distance, oldTimeStamp: oldTimeStamp, timeStamp: messageTimeStamp, messageText: userMessage, latitude: object.objectForKey("Latitude") as Float, longitude: object.objectForKey("Longitude") as Float)
+                                self.users.append(newUser)
+                            }
+                    }
                 }
                 self.tableView.reloadData()
             }

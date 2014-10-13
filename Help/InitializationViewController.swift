@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Adarshkumar Pavani. All rights reserved.
 //
 
+import CoreLocation
 import UIKit
 
 class InitializationViewController: UIViewController, CLLocationManagerDelegate {
@@ -16,12 +17,13 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
     var locationManager : CLLocationManager!
     var myLatitude : CLLocationDegrees!
     var myLongitude : CLLocationDegrees!
+    var myObject : PFObject!
+    var timer : NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         self.locationManager = CLLocationManager()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.delegate = self
@@ -32,8 +34,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.startUpdatingLocation()
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("startUpdatingLocation"), userInfo: nil, repeats: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +43,11 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
     }
 
 
+    func startUpdatingLocation()
+    {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
+    }
     /*
     // MARK: - Navigation
 
@@ -59,15 +65,22 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
         }
         else
         {
+            //Stuff to do before you segue
+            myObject["Name"] = self.name.text
+            myObject.saveInBackground()
+            
+            
             switch segue.identifier {
             case "toIMController":
-                if var firstViewController = segue.destinationViewController as? FirstViewController {
-                    firstViewController.myName = self.name.text
+                if var nextViewController = segue.destinationViewController as? TableViewController {
+                    nextViewController.myLatitude = (self.myLatitude.description as NSString).floatValue
+                    nextViewController.myLongitude = (self.myLongitude.description as NSString).floatValue
                 }
             
             default:
                 break
         }
+
         }
         
     }
@@ -108,7 +121,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
         
         let deviceID =  IdentityGenerator()
         
-        verifyAndRegisterDevice(deviceID: deviceID.identifierForVendor.description)
+        verifyAndRegisterDevice(deviceID: deviceID.identifierForVendor.UUIDString as String)
         
     }
 
@@ -124,19 +137,27 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
                     //Logic if the MacID is found
                     if((object.objectForKey("DeviceID") as? String) == ID)
                     {
+                        println("there")
                         addLocation = object as PFObject
                         addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
                         addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
+                        
+                        self.myObject = addLocation
+                        addLocation.saveInBackground()
+                        return
                     }
                 }
                 
                 //Logic if the registered MacID is not found
+                println(ID+" "+self.myLatitude.description+self.myLongitude.description)
                 addLocation["DeviceID"] = ID
                 addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
                 addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
                 
+                self.myObject = addLocation
+                addLocation.saveInBackground()
+                
             }
         })
-        addLocation.saveInBackground()
     }
 }
