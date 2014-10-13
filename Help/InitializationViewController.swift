@@ -8,18 +8,32 @@
 
 import UIKit
 
-class InitializationViewController: UIViewController {
+class InitializationViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var name: UITextField!
     @IBOutlet var initializationView: UIView!
 
     var tap: UITapGestureRecognizer!
+    var locationManager : CLLocationManager!
+    var myLatitude : CLLocationDegrees!
+    var myLongitude : CLLocationDegrees!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.locationManager = CLLocationManager()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.delegate = self
+        
+        //Tap Gesture Recognizer
         self.tap=UITapGestureRecognizer()
         setup()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,5 +88,55 @@ class InitializationViewController: UIViewController {
     {
     self.view.endEditing(true)
     }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        // Most recent updates are appended to end of array,
+        // so find the most recent update in last index.
+        var loc : CLLocation = locations?[locations.count - 1] as CLLocation
+        
+        // The location stored as a coordinate.
+        var coord : CLLocationCoordinate2D = loc.coordinate
+        
+        // Set the coordinates of location.
+        self.myLatitude = coord.latitude
+        self.myLongitude = coord.longitude
+        // Tell location manager to stop collecting and updating location.
+        self.locationManager.stopUpdatingLocation()
+        
+        //Setting other variables in the PFObject
+        
+        
+        let deviceID =  IdentityGenerator()
+        
+        verifyAndRegisterDevice(deviceID: deviceID.identifierForVendor.description)
+        
+    }
 
+    func verifyAndRegisterDevice(deviceID ID:String!) -> Void{
+    
+        var addLocation : PFObject = PFObject(className: "PeopleLocation")
+        
+        var query : PFQuery = PFQuery(className: "PeopleLocation")
+        query.findObjectsInBackgroundWithBlock({ (objects :[AnyObject]!, error : NSError!) -> Void in
+            if error == nil {
+                for object in objects
+                {
+                    //Logic if the MacID is found
+                    if((object.objectForKey("DeviceID") as? String) == ID)
+                    {
+                        addLocation = object as PFObject
+                        addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
+                        addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
+                    }
+                }
+                
+                //Logic if the registered MacID is not found
+                addLocation["DeviceID"] = ID
+                addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
+                addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
+                
+            }
+        })
+        addLocation.saveInBackground()
+    }
 }

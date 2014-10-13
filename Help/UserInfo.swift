@@ -18,8 +18,11 @@ class UserInfo{
     
     init(name: String, macID: String, distance: Float, timeStamp: String, messageText: String)
     {
-    
-        
+        self.name = name
+        self.macID = macID
+        self.distance = distance
+        self.timeStamp = timeStamp
+        self.messageText = messageText
     }
 
 }

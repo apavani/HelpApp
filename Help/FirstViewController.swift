@@ -25,7 +25,6 @@ class FirstViewController: UITableViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        println("Test")
         self.locationManager = CLLocationManager()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.delegate = self
@@ -61,13 +60,12 @@ class FirstViewController: UITableViewController, CLLocationManagerDelegate {
                         
                         var distance: Float = distanceCalc.calculateDistance()
                         
-                        var userdata: UserInfo = UserInfo(userID: userID, latitude: latitude, longitude: longitude, distance: distance)
                         
-                        self.users.append(userdata)
+                        //self.users.append(userdata)
                         var text:String!
                         
                         for user in self.users {
-                            text = self.Dialogue.text + user.userID + ":" + "\(user.distance)" + "\n"
+                            //text = self.Dialogue.text + user.userID + ":" + "\(user.distance)" + "\n"
                         }
                         self.Dialogue.text = text
                     }
