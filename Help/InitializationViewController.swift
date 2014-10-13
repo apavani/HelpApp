@@ -13,7 +13,10 @@ class InitializationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         let messageQuery = MessageQuery(messages: ["a","b","c"], oldCounts: [3,4,5], newCount: [3,5,5])
+        
+        var updatedMessages: [String] = messageQuery.newMessages()
+         println (updatedMessages)
         // Do any additional setup after loading the view.
     }
 

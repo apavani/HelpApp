@@ -78,6 +78,8 @@ class FirstViewController: UITableViewController, CLLocationManagerDelegate {
                             text = self.Dialogue.text + user.userID + ":" + "\(user.distance)" + "\n"
                         }
                         self.Dialogue.text = text
+                   
+                         
                     }
                     
                 }

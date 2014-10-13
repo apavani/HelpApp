@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1461224419EB4D620019BD14 /* MessageQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1461224319EB4D620019BD14 /* MessageQuery.swift */; };
 		14B5F1F419E0DD5500C8B826 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F119E0DD5500C8B826 /* Bolts.framework */; };
 		14B5F1F519E0DD5500C8B826 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F219E0DD5500C8B826 /* Parse.framework */; };
 		14B5F1F619E0DD5500C8B826 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1461224319EB4D620019BD14 /* MessageQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageQuery.swift; sourceTree = "<group>"; };
 		14B5F1F119E0DD5500C8B826 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		14B5F1F219E0DD5500C8B826 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		14B5F1F319E0DD5500C8B826 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				B4336CA519D8BBA800979946 /* Supporting Files */,
 				14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */,
 				B4CDC17519E9B3B70007A966 /* IdentityGenerator.swift */,
+				1461224319EB4D620019BD14 /* MessageQuery.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */,
 				B4F384C219EB076C0047AAF6 /* TableViewCell.swift in Sources */,
 				B4F487D019EAF0C500D5C582 /* InitializationViewController.swift in Sources */,
+				1461224419EB4D620019BD14 /* MessageQuery.swift in Sources */,
 				B4CDC17619E9B3B70007A966 /* IdentityGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
