@@ -10,11 +10,16 @@ import UIKit
 
 class InitializationViewController: UIViewController {
     @IBOutlet var name: UITextField!
+    @IBOutlet var initializationView: UIView!
 
+    var tap: UITapGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.tap=UITapGestureRecognizer()
+        setup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +62,17 @@ class InitializationViewController: UIViewController {
     var alert = UIAlertController(title: "Name Field Is Left Blank", message: "Please enter a name first, and then press continue", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func setup()
+    {
+        self.initializationView.addGestureRecognizer(self.tap)
+        self.tap.addTarget(self, action: "tapped:")
+    }
+    
+    func tapped(sender: UIGestureRecognizer)
+    {
+    self.view.endEditing(true)
     }
 
 }

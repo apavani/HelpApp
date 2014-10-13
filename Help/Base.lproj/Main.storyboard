@@ -38,13 +38,19 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="dcI-Qo-4d2" appends="YES" id="a9W-ol-BlD"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="t8E-iX-Ay9"/>
                     <connections>
+                        <outlet property="initializationView" destination="GTd-nZ-HdS" id="O9M-Ad-vn5"/>
                         <outlet property="name" destination="5Ge-mr-8DZ" id="f0s-jA-rYb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFW-dX-Xyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dcI-Qo-4d2"/>
             </objects>
             <point key="canvasLocation" x="807" y="-307"/>
         </scene>
@@ -56,6 +62,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <textField key="tableFooterView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="9mX-hd-X88">
+                            <rect key="frame" x="0.0" y="-30" width="320" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6BJ-Xo-gsW" customClass="TableViewCell" customModule="Help" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -98,6 +110,7 @@
                     <navigationItem key="navigationItem" id="hZN-SI-WOj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSK-HN-Vnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aEG-To-soa"/>
             </objects>
             <point key="canvasLocation" x="1226" y="-321"/>
         </scene>
