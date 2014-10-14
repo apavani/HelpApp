@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddMessageControllerDelegate{
+    func myVCDidFinish(controller:AddMessageViewController,message:String)
+}
+
 class AddMessageViewController: UIViewController {
 
     
@@ -15,7 +19,14 @@ class AddMessageViewController: UIViewController {
     var addMessage : PFObject!
     @IBOutlet var messageText: UITextField!
 
+
     @IBAction func sendMessageButton(sender: UIButton) {
+        
+        if(delegate != nil){
+            var message = self.messageText.text
+            delegate!.myVCDidFinish(self, message:message)
+        }
+
         addMessage = PFObject(className: "PeopleLocation")
         
         var query : PFQuery = PFQuery(className: "PeopleLocation")
@@ -50,7 +61,7 @@ class AddMessageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+ var delegate: AddMessageControllerDelegate? = nil
     /*
     // MARK: - Navigation
 

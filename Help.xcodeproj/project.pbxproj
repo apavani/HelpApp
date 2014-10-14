@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14B87B0B19ECC3CD00CAF979 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */; };
 		14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */; };
 		738EE64819EB47E700B06DA8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64519EB47E700B06DA8 /* Parse.framework */; };
 		738EE64919EB47E700B06DA8 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Help-Bridging-Header.h"; sourceTree = "<group>"; };
+		14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate_Distance.swift; sourceTree = "<group>"; };
 		738EE64519EB47E700B06DA8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				B4336CA519D8BBA800979946 /* Supporting Files */,
 				14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */,
 				B4CDC17519E9B3B70007A966 /* IdentityGenerator.swift */,
+				14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			files = (
 				14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */,
 				738EE64C19EB597B00B06DA8 /* TableViewController.swift in Sources */,
+				14B87B0B19ECC3CD00CAF979 /* MessageTableViewController.swift in Sources */,
 				B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */,
 				B4336CAA19D8BBA800979946 /* FirstViewController.swift in Sources */,
 				738EE64E19EB808F00B06DA8 /* UserInfo.swift in Sources */,

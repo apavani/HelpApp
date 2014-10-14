@@ -1,16 +1,16 @@
 //
-//  TableViewController.swift
+//  MessageTableViewController.swift
 //  Help
 //
-//  Created by Adarshkumar Pavani on 10/12/14.
+//  Created by LiQihui on 10/13/14.
 //  Copyright (c) 2014 Adarshkumar Pavani. All rights reserved.
 //
 
 import UIKit
 import Foundation
 
-class TableViewController: UITableViewController, UITableViewDataSource {
-
+class MessageTableViewController: UITableViewController, UITableViewDataSource, AddMessageControllerDelegate {
+    
     var myLatitude : Float!
     var myLongitude : Float!
     var timer : NSTimer!
@@ -22,20 +22,21 @@ class TableViewController: UITableViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.timeformatter.dateFormat = "hh:mm"
         
-         self.timer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: Selector("loadNewData"), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: Selector("loadNewData"), userInfo: nil, repeats: true)
     }
-
+    
     override func viewDidDisappear(animated: Bool) {
         timer.invalidate()
     }
+    
     func loadNewData()
     {
         
@@ -47,31 +48,31 @@ class TableViewController: UITableViewController, UITableViewDataSource {
                     let distanceCalc = DistanceCalculator(lat1: self.myLatitude, lat2: object.objectForKey("Latitude") as Float, lon1: self.myLongitude , lon2: object.objectForKey("Longitude") as Float)
                     var distance : Float = distanceCalc.calculateDistance()
                     
-                        if(distance < 100)
+                    if(distance < 100)
+                    {
+                        var oldCount : Int
+                        if(object.objectForKey("oldCount") == nil)
                         {
-                            var oldCount : Int
-                            if(object.objectForKey("oldCount") == nil)
-                            {
-                                oldCount = 0
-                            }
-                            else
-                            {
+                            oldCount = 0
+                        }
+                        else
+                        {
                             oldCount = object.objectForKey("oldCount") as Int
-                            }
-                            
-                            var newCount : Int
-                            
-                            if(object.objectForKey("newCount") == nil)
-                            {
-                                newCount = 0
-                            }
-                            else
-                            {
-                                newCount = object.objectForKey("newCount") as Int
-                            }
-                            
-                            if((oldCount != newCount) || self.firstTime)
-                            {
+                        }
+                        
+                        var newCount : Int
+                        
+                        if(object.objectForKey("newCount") == nil)
+                        {
+                            newCount = 0
+                        }
+                        else
+                        {
+                            newCount = object.objectForKey("newCount") as Int
+                        }
+                        
+                        if((oldCount != newCount) || self.firstTime)
+                        {
                             var userName : String = object.objectForKey("Name") as String
                             var userMacID : String =  object.objectForKey("DeviceID") as String
                             var messageTimeStamp : String = self.timeformatter.stringFromDate(object.updatedAt)
@@ -84,50 +85,50 @@ class TableViewController: UITableViewController, UITableViewDataSource {
                             
                             var latitude : Float = object.objectForKey("Latitude") as Float
                             var longitude : Float = object.objectForKey("Longitude") as Float
-                                
-                                if(self.firstTime)
-                                {
-                                    var updateCount : PFObject = PFObject(className: "PeopleLocation")
-                                    updateCount = object as PFObject
-                                    updateCount["oldCount"] = oldCount
-                                    updateCount["newCount"] = newCount
-                                    updateCount.saveInBackground()
-                                }
-                                else
-                                {
+                            
+                            if(self.firstTime)
+                            {
+                                var updateCount : PFObject = PFObject(className: "PeopleLocation")
+                                updateCount = object as PFObject
+                                updateCount["oldCount"] = oldCount
+                                updateCount["newCount"] = newCount
+                                updateCount.saveInBackground()
+                            }
+                            else
+                            {
                                 var updateCount : PFObject = PFObject(className: "PeopleLocation")
                                 updateCount = object as PFObject
                                 updateCount["oldCount"] = object.objectForKey("newCount") as Int
                                 updateCount.saveInBackground()
-                                }
-                    
-                                var newUser : UserInfo = UserInfo(name: userName, macID: userMacID, distance: distance, timeStamp: messageTimeStamp, messageText: userMessage, latitude: object.objectForKey("Latitude") as Float, longitude: object.objectForKey("Longitude") as Float, oldCount : oldCount, newCount : newCount)
-                                if(!self.firstTime)
-                                {
-                                self.users.append(newUser)
-                                }
                             }
+                            
+                            var newUser : UserInfo = UserInfo(name: userName, macID: userMacID, distance: distance, timeStamp: messageTimeStamp, messageText: userMessage, latitude: object.objectForKey("Latitude") as Float, longitude: object.objectForKey("Longitude") as Float, oldCount : oldCount, newCount : newCount)
+                            if(!self.firstTime)
+                            {
+                                self.users.append(newUser)
+                            }
+                        }
                     }
                 }
                 self.firstTime = false
                 self.tableView.reloadData()
             }
         }
-    
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.users.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("chatMessage") as? TableViewCell ?? TableViewCell()
@@ -139,50 +140,67 @@ class TableViewController: UITableViewController, UITableViewDataSource {
         return cell
     }
     
+    //help message returned from AddMessageViewController
+    func myVCDidFinish(controller:AddMessageViewController,message:String){
+//        userInfo = UserInfo(name: <#String#>, macID: <#String#>, distance: <#Float#>, timeStamp: <#String#>, messageText: <#String#>, latitude: <#Float#>, longitude: <#Float#>, oldCount: <#Int#>, newCount: <#Int#>)
+        controller.navigationController?.popViewControllerAnimated(true)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier {
+        case "toAddMessage":
+            if var secondViewController = segue.destinationViewController as? AddMessageViewController {
+                secondViewController.delegate = self
+            }
+                    
+        default:
+            break
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    // Return NO if you do not want the specified item to be editable.
+    return true
     }
     */
-
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    if editingStyle == .Delete {
+    // Delete the row from the data source
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    } else if editingStyle == .Insert {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
     }
     */
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
-
+    
     }
     */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
+    // Return NO if you do not want the item to be re-orderable.
+    return true
     }
     */
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

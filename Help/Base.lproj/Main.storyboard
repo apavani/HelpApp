@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hZm-YL-MpD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hZm-YL-MpD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -57,7 +57,7 @@
         <!--Messages-->
         <scene sceneID="wnM-xS-wNi">
             <objects>
-                <tableViewController id="soZ-Np-4sH" customClass="TableViewController" customModule="Help" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="soZ-Np-4sH" customClass="MessageTableViewController" customModule="Help" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XI5-Gx-kos">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,10 +109,10 @@
                                 <state key="normal" title="Add">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="UD7-rE-mcc" kind="push" identifier="toAddMessage" id="0gu-7H-znb"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="UD7-rE-mcc" kind="push" identifier="toAddMessage" id="uP6-gB-Z3z"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -163,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEc-MZ-37e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="-334"/>
+            <point key="canvasLocation" x="1793" y="-289"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aQN-FK-qY5">
