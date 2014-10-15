@@ -72,11 +72,12 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
             
             switch segue.identifier {
             case "toIMController":
-                if var nextViewController = segue.destinationViewController as? TableViewController {
+                if var nextViewController = segue.destinationViewController as? MessageTableViewController {
                     nextViewController.myLatitude = (self.myLatitude.description as NSString).floatValue
                     nextViewController.myLongitude = (self.myLongitude.description as NSString).floatValue
                 }
             
+                
             default:
                 break
         }
