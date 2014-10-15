@@ -155,13 +155,19 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zUK-q7-GXr" appends="YES" id="ccQ-At-sbV"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Send Message" id="kZH-Zn-q46"/>
                     <connections>
                         <outlet property="messageText" destination="3iv-rs-fnt" id="i56-kv-zmy"/>
+                        <outlet property="sendMessageView" destination="Bgs-L0-6Ff" id="Wzi-UN-awR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEc-MZ-37e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zUK-q7-GXr"/>
             </objects>
             <point key="canvasLocation" x="1793" y="-289"/>
         </scene>
