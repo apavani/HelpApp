@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hZm-YL-MpD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hZm-YL-MpD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -155,13 +155,19 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zUK-q7-GXr" appends="YES" id="ccQ-At-sbV"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Send Message" id="kZH-Zn-q46"/>
                     <connections>
                         <outlet property="messageText" destination="3iv-rs-fnt" id="i56-kv-zmy"/>
+                        <outlet property="sendMessageView" destination="Bgs-L0-6Ff" id="Wzi-UN-awR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEc-MZ-37e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zUK-q7-GXr"/>
             </objects>
             <point key="canvasLocation" x="1793" y="-289"/>
         </scene>
@@ -173,6 +179,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ad1-Dv-N7h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.99449936220000001" green="0.0" blue="0.2274469291" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

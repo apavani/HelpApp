@@ -14,40 +14,25 @@ protocol AddMessageControllerDelegate{
 
 class AddMessageViewController: UIViewController {
 
-    
-    var myID : String!
-    var addMessage : PFObject!
+    @IBOutlet var sendMessageView: UIView!
+    var tap: UITapGestureRecognizer!
+
     @IBOutlet var messageText: UITextField!
 
 
     @IBAction func sendMessageButton(sender: UIButton) {
+        
+        if(self.messageText.text=="")
+        {
+            self.showNullAlert()
+            return
+        }
         
         if(delegate != nil){
             var message = self.messageText.text
             delegate!.myVCDidFinish(self, message:message)
         }
 
-        addMessage = PFObject(className: "PeopleLocation")
-        
-        var query : PFQuery = PFQuery(className: "PeopleLocation")
-        query.findObjectsInBackgroundWithBlock({ (objects :[AnyObject]!, error : NSError!) -> Void in
-            if error == nil {
-        for object in objects
-        {
-            //Logic if the MacID is found
-            if((object.objectForKey("DeviceID") as? String) == self.myID)
-            {
-                self.addMessage = object as PFObject
-                self.addMessage["Message"] = self.messageText.text
-                self.addMessage["newCount"] = ((object.objectForKey("newCount") as Int)+1)
-                self.addMessage.saveInBackgroundWithBlock{ (Bool, NSError) -> Void in
-                //self.navigationController?.popViewControllerAnimated(true)
-                }
-            }
-            break
-        }
-        }
-        })
     }
     
     override func viewDidLoad() {
@@ -56,9 +41,25 @@ class AddMessageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(animated: Bool) {
+        //Tap Gesture Recognizer
+        self.tap=UITapGestureRecognizer()
+        setup()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setup()
+    {
+        self.sendMessageView.addGestureRecognizer(self.tap)
+        self.tap.addTarget(self, action: "tapped:")
+    }
+    
+    func tapped(sender: UIGestureRecognizer)
+    {
+        self.view.endEditing(true)
     }
     
  var delegate: AddMessageControllerDelegate? = nil
@@ -71,5 +72,10 @@ class AddMessageViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func showNullAlert(){
+        var alert = UIAlertController(title: "Message Field Is Left Blank", message: "Please enter a message first, and then press the Send button", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 
 }

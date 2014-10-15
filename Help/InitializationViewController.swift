@@ -18,6 +18,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
     var myLatitude : CLLocationDegrees!
     var myLongitude : CLLocationDegrees!
     var myObject : PFObject!
+    var myID : String!
     //var timer : NSTimer!
     
     override func viewDidLoad() {
@@ -75,6 +76,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
                 if var nextViewController = segue.destinationViewController as? MessageTableViewController {
                     nextViewController.myLatitude = (self.myLatitude.description as NSString).floatValue
                     nextViewController.myLongitude = (self.myLongitude.description as NSString).floatValue
+                    nextViewController.myID = self.myID
                 }
             
                 
@@ -122,7 +124,8 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
         
         let deviceID =  IdentityGenerator()
         
-        verifyAndRegisterDevice(deviceID: deviceID.identifierForVendor.UUIDString as String)
+        self.myID = deviceID.identifierForVendor.UUIDString as String
+        verifyAndRegisterDevice(deviceID: self.myID)
         
     }
 
@@ -138,7 +141,6 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
                     //Logic if the MacID is found
                     if((object.objectForKey("DeviceID") as? String) == ID)
                     {
-                        println("there")
                         addLocation = object as PFObject
                         addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
                         addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
