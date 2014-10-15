@@ -19,6 +19,8 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
     var timeformatter = NSDateFormatter()
     var usersWithinRange : [UserInfo] = []
     var firstTime : Bool = true
+    var myID: String!
+    var addMessage : PFObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +31,14 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.timeformatter.dateFormat = "hh:mm"
-        
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: Selector("loadNewData"), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("loadNewData"), userInfo: nil, repeats: true)
     }
     
     override func viewDidDisappear(animated: Bool) {
-        timer.invalidate()
+        self.timer.invalidate()
     }
     
     func loadNewData()
@@ -143,7 +147,31 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
     //help message returned from AddMessageViewController
     func myVCDidFinish(controller:AddMessageViewController,message:String){
 //        userInfo = UserInfo(name: <#String#>, macID: <#String#>, distance: <#Float#>, timeStamp: <#String#>, messageText: <#String#>, latitude: <#Float#>, longitude: <#Float#>, oldCount: <#Int#>, newCount: <#Int#>)
-        controller.navigationController?.popViewControllerAnimated(true)
+        addMessage = PFObject(className: "PeopleLocation")
+        
+        var query : PFQuery = PFQuery(className: "PeopleLocation")
+        query.findObjectsInBackgroundWithBlock({ (objects :[AnyObject]!, error : NSError!) -> Void in
+            if error == nil {
+                for object in objects
+                {
+                    //Logic if the MacID is found
+                    if((object.objectForKey("DeviceID") as String) == self.myID)
+                    {
+                        self.addMessage = object as PFObject
+                        self.addMessage["Message"] = message
+                        self.addMessage["newCount"] = ((object.objectForKey("newCount") as Int)+1)
+                        self.addMessage.saveInBackgroundWithBlock{ (Bool, NSError) -> Void in
+                            
+                            //self.navigationController?.popViewControllerAnimated(true)
+                        }
+                        break
+                    }
+                }
+            }
+            controller.navigationController?.popViewControllerAnimated(true)
+
+        })
+
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

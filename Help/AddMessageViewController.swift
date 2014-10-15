@@ -15,8 +15,6 @@ protocol AddMessageControllerDelegate{
 class AddMessageViewController: UIViewController {
 
     
-    var myID : String!
-    var addMessage : PFObject!
     @IBOutlet var messageText: UITextField!
 
 
@@ -27,27 +25,6 @@ class AddMessageViewController: UIViewController {
             delegate!.myVCDidFinish(self, message:message)
         }
 
-        addMessage = PFObject(className: "PeopleLocation")
-        
-        var query : PFQuery = PFQuery(className: "PeopleLocation")
-        query.findObjectsInBackgroundWithBlock({ (objects :[AnyObject]!, error : NSError!) -> Void in
-            if error == nil {
-        for object in objects
-        {
-            //Logic if the MacID is found
-            if((object.objectForKey("DeviceID") as? String) == self.myID)
-            {
-                self.addMessage = object as PFObject
-                self.addMessage["Message"] = self.messageText.text
-                self.addMessage["newCount"] = ((object.objectForKey("newCount") as Int)+1)
-                self.addMessage.saveInBackgroundWithBlock{ (Bool, NSError) -> Void in
-                //self.navigationController?.popViewControllerAnimated(true)
-                }
-            }
-            break
-        }
-        }
-        })
     }
     
     override func viewDidLoad() {
