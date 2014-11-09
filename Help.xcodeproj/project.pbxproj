@@ -48,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		149082A31A0EE2B40028BB04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		149082A51A0EE6090028BB04 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Help-Bridging-Header.h"; sourceTree = "<group>"; };
 		14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate_Distance.swift; sourceTree = "<group>"; };
@@ -127,7 +126,6 @@
 		B4336C9919D8BBA800979946 = {
 			isa = PBXGroup;
 			children = (
-				149082A51A0EE6090028BB04 /* Bridging-Header.h */,
 				149082A31A0EE2B40028BB04 /* FacebookSDK.framework */,
 				738EE64419EB47E700B06DA8 /* parse-library-1.4.1 */,
 				14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */,

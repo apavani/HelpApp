@@ -9,9 +9,10 @@
 import CoreLocation
 import UIKit
 
-class InitializationViewController: UIViewController, CLLocationManagerDelegate {
+class InitializationViewController: UIViewController, CLLocationManagerDelegate, FBLoginViewDelegate{
     @IBOutlet var name: UITextField!
     @IBOutlet var initializationView: UIView!
+    @IBOutlet var fbLoginView : FBLoginView!
 
     var tap: UITapGestureRecognizer!
     var locationManager : CLLocationManager!
@@ -28,7 +29,8 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
         self.locationManager = CLLocationManager()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.delegate = self
-        
+        self.fbLoginView.delegate = self
+        self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
         //Tap Gesture Recognizer
         self.tap=UITapGestureRecognizer()
         setup()
@@ -36,6 +38,28 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate 
     
     override func viewDidAppear(animated: Bool) {
      NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("startUpdatingLocation"), userInfo: nil, repeats: false)
+    }
+
+    // Facebook Delegate Methods
+    
+    func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
+        println("User Logged In")
+    }
+    
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
+        println("User: \(user)")
+        println("User ID: \(user.objectID)")
+        println("User Name: \(user.name)")
+        var userEmail = user.objectForKey("email") as String
+        println("User Email: \(userEmail)")
+    }
+    
+    func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
+        println("User Logged Out")
+    }
+    
+    func loginView(loginView : FBLoginView!, handleError:NSError) {
+        println("Error: \(handleError.localizedDescription)")
     }
 
     override func didReceiveMemoryWarning() {
