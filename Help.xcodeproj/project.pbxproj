@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		149082A41A0EE2B40028BB04 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149082A31A0EE2B40028BB04 /* FacebookSDK.framework */; };
 		14B87B0B19ECC3CD00CAF979 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */; };
 		14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */; };
 		738EE64819EB47E700B06DA8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64519EB47E700B06DA8 /* Parse.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		149082A31A0EE2B40028BB04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		149082A51A0EE6090028BB04 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Help-Bridging-Header.h"; sourceTree = "<group>"; };
 		14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate_Distance.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 				B4DCC8FD19E0AF2700AAC670 /* SystemConfiguration.framework in Frameworks */,
 				B4DCC8FB19E0AF1E00AAC670 /* StoreKit.framework in Frameworks */,
 				B4DCC8ED19E0AEB500AAC670 /* AudioToolbox.framework in Frameworks */,
+				149082A41A0EE2B40028BB04 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +127,8 @@
 		B4336C9919D8BBA800979946 = {
 			isa = PBXGroup;
 			children = (
+				149082A51A0EE6090028BB04 /* Bridging-Header.h */,
+				149082A31A0EE2B40028BB04 /* FacebookSDK.framework */,
 				738EE64419EB47E700B06DA8 /* parse-library-1.4.1 */,
 				14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */,
 				B4DCC8FC19E0AF2700AAC670 /* SystemConfiguration.framework */,
@@ -431,6 +437,7 @@
 					"/Users/demo/Downloads/parse-library-1.4.0",
 					"/Users/liqihui/Downloads/parse-library-1.4.0",
 					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.4.1",
+					/Users/liqihui/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -450,6 +457,7 @@
 					"/Users/demo/Downloads/parse-library-1.4.0",
 					"/Users/liqihui/Downloads/parse-library-1.4.0",
 					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.4.1",
+					/Users/liqihui/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
