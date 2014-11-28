@@ -175,7 +175,8 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier {
+        var text:String = segue.identifier as String!
+        switch text{
         case "toAddMessage":
             if var secondViewController = segue.destinationViewController as? AddMessageViewController {
                 secondViewController.delegate = self

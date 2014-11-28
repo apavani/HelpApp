@@ -95,7 +95,8 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
             myObject.saveInBackground()
             
             
-            switch segue.identifier {
+            var text:String = segue.identifier as String!
+            switch text {
             case "toIMController":
                 if var nextViewController = segue.destinationViewController as? MessageTableViewController {
                     nextViewController.myLatitude = (self.myLatitude.description as NSString).floatValue

@@ -9,7 +9,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Help-Bridging-Header.h"
+            filePath = "FacebookSDK.framework/Versions/A/FacebookSDK"
             timestampString = "434849324.363946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
