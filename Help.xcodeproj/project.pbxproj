@@ -15,6 +15,12 @@
 		738EE64919EB47E700B06DA8 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */; };
 		738EE64A19EB47E700B06DA8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64719EB47E700B06DA8 /* Bolts.framework */; };
 		738EE64E19EB808F00B06DA8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EE64D19EB808F00B06DA8 /* UserInfo.swift */; };
+		73F56C2D1A27F4DC000BCD46 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F56C2C1A27F4DC000BCD46 /* Social.framework */; };
+		73F56C2F1A27F4E5000BCD46 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F56C2E1A27F4E5000BCD46 /* Accounts.framework */; };
+		73F56C311A27F531000BCD46 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F56C301A27F531000BCD46 /* Firebase.framework */; };
+		73F56C331A27F58E000BCD46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F56C321A27F58D000BCD46 /* UIKit.framework */; };
+		73F56C351A27FD2C000BCD46 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F56C341A27FD2C000BCD46 /* libicucore.dylib */; };
+		73F56C371A27FD3D000BCD46 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F56C361A27FD3D000BCD46 /* libc++.dylib */; };
 		73F7C2DB19EB452C003123C8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC8F619E0AF0A00AAC670 /* QuartzCore.framework */; };
 		B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA719D8BBA800979946 /* AppDelegate.swift */; };
 		B4336CAF19D8BBA800979946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4336CAD19D8BBA800979946 /* Main.storyboard */; };
@@ -54,6 +60,12 @@
 		738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		738EE64719EB47E700B06DA8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		738EE64D19EB808F00B06DA8 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		73F56C2C1A27F4DC000BCD46 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		73F56C2E1A27F4E5000BCD46 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		73F56C301A27F531000BCD46 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = ../../Downloads/Firebase.framework; sourceTree = "<group>"; };
+		73F56C321A27F58D000BCD46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		73F56C341A27FD2C000BCD46 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		73F56C361A27FD3D000BCD46 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		B4336CA219D8BBA800979946 /* Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4336CA619D8BBA800979946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4336CA719D8BBA800979946 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +96,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73F56C371A27FD3D000BCD46 /* libc++.dylib in Frameworks */,
+				73F56C351A27FD2C000BCD46 /* libicucore.dylib in Frameworks */,
+				B4DCC8ED19E0AEB500AAC670 /* AudioToolbox.framework in Frameworks */,
+				73F56C331A27F58E000BCD46 /* UIKit.framework in Frameworks */,
+				73F56C2F1A27F4E5000BCD46 /* Accounts.framework in Frameworks */,
+				73F56C2D1A27F4DC000BCD46 /* Social.framework in Frameworks */,
 				736FD9CC1A27E9A20054B49F /* libz.dylib in Frameworks */,
 				B4DCC8F919E0AF1400AAC670 /* Security.framework in Frameworks */,
 				73F7C2DB19EB452C003123C8 /* QuartzCore.framework in Frameworks */,
@@ -95,8 +113,8 @@
 				738EE64819EB47E700B06DA8 /* Parse.framework in Frameworks */,
 				B4DCC8EF19E0AECF00AAC670 /* CFNetwork.framework in Frameworks */,
 				B4DCC8FD19E0AF2700AAC670 /* SystemConfiguration.framework in Frameworks */,
+				73F56C311A27F531000BCD46 /* Firebase.framework in Frameworks */,
 				B4DCC8FB19E0AF1E00AAC670 /* StoreKit.framework in Frameworks */,
-				B4DCC8ED19E0AEB500AAC670 /* AudioToolbox.framework in Frameworks */,
 				736FD9CB1A27E9270054B49F /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,6 +143,12 @@
 		B4336C9919D8BBA800979946 = {
 			isa = PBXGroup;
 			children = (
+				73F56C361A27FD3D000BCD46 /* libc++.dylib */,
+				73F56C341A27FD2C000BCD46 /* libicucore.dylib */,
+				73F56C321A27F58D000BCD46 /* UIKit.framework */,
+				73F56C301A27F531000BCD46 /* Firebase.framework */,
+				73F56C2E1A27F4E5000BCD46 /* Accounts.framework */,
+				73F56C2C1A27F4DC000BCD46 /* Social.framework */,
 				736FD9CA1A27E9270054B49F /* FacebookSDK.framework */,
 				738EE64419EB47E700B06DA8 /* parse-library-1.4.1 */,
 				B4DCC8FC19E0AF2700AAC670 /* SystemConfiguration.framework */,
@@ -435,6 +459,7 @@
 					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.4.1",
 					/Users/liqihui/Documents/FacebookSDK,
 					/afs/andrew.cmu.edu/usr12/apavani/Documents,
+					/afs/andrew.cmu.edu/usr12/apavani/Downloads,
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -456,6 +481,7 @@
 					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.4.1",
 					/Users/liqihui/Documents/FacebookSDK,
 					/afs/andrew.cmu.edu/usr12/apavani/Documents,
+					/afs/andrew.cmu.edu/usr12/apavani/Downloads,
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
