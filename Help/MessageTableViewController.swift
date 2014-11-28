@@ -9,11 +9,17 @@
 import UIKit
 import Foundation
 
-class MessageTableViewController: UITableViewController, UITableViewDataSource, AddMessageControllerDelegate {
+class MessageTableViewController: UITableViewController, UITableViewDataSource, AddMessageControllerDelegate, CLLocationManagerDelegate {
     
-    var myLatitude : Float!
-    var myLongitude : Float!
+    var myLatitudeFloat : Float!
+    var myLongitudeFloat : Float!
     var timer : NSTimer!
+    
+    
+    var locationManager : CLLocationManager!
+    var myLatitude : CLLocationDegrees!
+    var myLongitude : CLLocationDegrees!
+    
     
     var users : [UserInfo] = []
     var timeformatter = NSDateFormatter()
@@ -24,7 +30,10 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.locationManager = CLLocationManager()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        self.locationManager.delegate = self
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -33,8 +42,16 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
         self.timeformatter.dateFormat = "hh:mm"
     }
     
+    
+    func startUpdatingLocation()
+    {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
+    }
+    
     override func viewDidAppear(animated: Bool) {
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("loadNewData"), userInfo: nil, repeats: true)
+        
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("startUpdatingLocation"), userInfo: nil, repeats: false)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -49,7 +66,7 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
             if error == nil{
                 
                 for object in objects{
-                    let distanceCalc = DistanceCalculator(lat1: self.myLatitude, lat2: object.objectForKey("Latitude") as Float, lon1: self.myLongitude , lon2: object.objectForKey("Longitude") as Float)
+                    let distanceCalc = DistanceCalculator(lat1: self.myLatitudeFloat, lat2: object.objectForKey("Latitude") as Float, lon1: self.myLongitudeFloat , lon2: object.objectForKey("Longitude") as Float)
                     var distance : Float = distanceCalc.calculateDistance()
                     
                     if(distance < 100)
@@ -174,8 +191,10 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
 
     }
 
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier {
+        var text:String = segue.identifier as String!
+        switch text {
         case "toAddMessage":
             if var secondViewController = segue.destinationViewController as? AddMessageViewController {
                 secondViewController.delegate = self
@@ -230,5 +249,73 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
     // Pass the selected object to the new view controller.
     }
     */
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        print("Saving Location")
+        // Most recent updates are appended to end of array,
+        // so find the most recent update in last index.
+        var loc : CLLocation = locations?[locations.count - 1] as CLLocation
+        
+        // The location stored as a coordinate.
+        var coord : CLLocationCoordinate2D = loc.coordinate
+        
+        // Set the coordinates of location.
+        self.myLatitude = coord.latitude
+        self.myLongitude = coord.longitude
+        // Tell location manager to stop collecting and updating location.
+        self.locationManager.stopUpdatingLocation()
+        
+        //Setting other variables in the PFObject
+        
+        
+        let deviceID =  IdentityGenerator()
+        
+        self.myID = deviceID.identifierForVendor.UUIDString as String
+        verifyAndRegisterDevice(deviceID: self.myID)
+        
+    }
+    
+    func verifyAndRegisterDevice(deviceID ID:String!) -> Void{
+        
+        var addLocation : PFObject = PFObject(className: "PeopleLocation")
+        
+        var query : PFQuery = PFQuery(className: "PeopleLocation")
+        query.findObjectsInBackgroundWithBlock({ (objects :[AnyObject]!, error : NSError!) -> Void in
+            if error == nil {
+                for object in objects
+                {
+                    //Logic if the MacID is found
+                    if((object.objectForKey("DeviceID") as? String) == ID)
+                    {
+                        addLocation = object as PFObject
+                        addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
+                        addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
+                        
+                        //Saving a local copy of it
+                        addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
+                        addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
+                        
+                        addLocation.saveInBackground()
+                        return
+                    }
+                }
+                
+                //Logic if the registered MacID is not found
+                println(ID+" "+self.myLatitude.description+self.myLongitude.description)
+                addLocation["DeviceID"] = ID
+                addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
+                addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
+                
+                addLocation.saveInBackgroundWithBlock({ (success: Bool!, error: NSError!) -> Void in
+                if (success==true && (error == nil))
+                {
+                    
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("loadNewData"), userInfo: nil, repeats: true)
+                    }
+                })
+                
+            }
+        })
+    }
     
 }

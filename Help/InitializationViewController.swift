@@ -9,15 +9,13 @@
 import CoreLocation
 import UIKit
 
-class InitializationViewController: UIViewController, CLLocationManagerDelegate, FBLoginViewDelegate{
+class InitializationViewController: UIViewController, CLLocationManagerDelegate, FBLoginViewDelegate,SignUpControllerDelegate{
     @IBOutlet var name: UITextField!
     @IBOutlet var initializationView: UIView!
     @IBOutlet var fbLoginView : FBLoginView!
 
+    @IBOutlet var passwordTextField: UITextField!
     var tap: UITapGestureRecognizer!
-    var locationManager : CLLocationManager!
-    var myLatitude : CLLocationDegrees!
-    var myLongitude : CLLocationDegrees!
     var myObject : PFObject!
     var myID : String!
     //var timer : NSTimer!
@@ -26,20 +24,20 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.locationManager = CLLocationManager()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.delegate = self
-        self.fbLoginView.delegate = self
+                self.fbLoginView.delegate = self
         self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
         //Tap Gesture Recognizer
         self.tap=UITapGestureRecognizer()
         setup()
     }
     
-    override func viewDidAppear(animated: Bool) {
-     NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("startUpdatingLocation"), userInfo: nil, repeats: false)
-    }
 
+    func myVCDidFinish(controller:SignUpViewController,Name:String,Password:String){
+        name.text = Name
+        passwordTextField.text = Password
+        
+        controller.navigationController?.popViewControllerAnimated(true)
+    }
     // Facebook Delegate Methods
     
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
@@ -52,6 +50,35 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
         println("User Name: \(user.name)")
         var userEmail = user.objectForKey("email") as String
         println("User Email: \(userEmail)")
+        /* make the API call */
+//        FBRequestConnection.startForMyFriendsWithCompletionHandler({ (connection, result, error: NSError!) -> Void in
+//            if error == nil {
+//                var friendObjects = result["data"] as [NSDictionary]
+//                for friendObject in friendObjects {
+//                    println(friendObject["id"] as NSString)
+//                }
+//                println("\(friendObjects.count)")
+//            } else {
+//                println("Error requesting friends list form facebook")
+//                println("\(error)")
+//            }
+//        })
+        // Get List Of Friends
+//        var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
+//        friendsRequest.startWithCompletionHandler{(connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
+//            var resultdict = result as NSDictionary
+//            println("Result Dict: \(resultdict)")
+//            var data : NSArray = resultdict.objectForKey("data") as NSArray
+//            
+//            for i in 0..<data.count {
+//                let valueDict : NSDictionary = data[i] as NSDictionary
+//                let id = valueDict.objectForKey("id") as String
+//                println("the id value is \(id)")
+//            }
+//            
+//            var friends = resultdict.objectForKey("data") as NSArray
+//            println("Found \(friends.count) friends")
+//        }
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
@@ -68,11 +95,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
     }
 
 
-    func startUpdatingLocation()
-    {
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.startUpdatingLocation()
-    }
+
     /*
     // MARK: - Navigation
 
@@ -83,37 +106,51 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
     }
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(self.name.text=="")
-        {
-            self.showNullAlert()
-            return
-        }
-        else
-        {
-            //Stuff to do before you segue
-            myObject["Name"] = self.name.text
-            myObject.saveInBackground()
-            
-            
-            switch segue.identifier {
+        
+                   //Stuff to do before you segue
+        
+            var text:String = segue.identifier as String!
+            switch text {
             case "toIMController":
                 if var nextViewController = segue.destinationViewController as? MessageTableViewController {
-                    nextViewController.myLatitude = (self.myLatitude.description as NSString).floatValue
-                    nextViewController.myLongitude = (self.myLongitude.description as NSString).floatValue
-                    nextViewController.myID = self.myID
+                    var nameString = self.name.text
+                    var passwordString = self.passwordTextField.text
+                    if(nameString=="" || passwordString=="")
+                    {
+                        self.showNullAlert()
+                        return
+                    }else{
+                        PFUser.logInWithUsernameInBackground(nameString, password:passwordString) {
+                            (user: PFUser!, error: NSError!) -> Void in
+                            if user != nil {
+                                // Do stuff after successful login.
+                                self.myObject = PFObject(className: "PeopleLocation")
+                                self.myObject["Name"]=user.username
+                                self.myObject.saveInBackground()
+
+                                nextViewController.myID = self.myID
+                            } else {
+                                // The login failed. Check error to see why.
+                               println("Error: \(error.localizedDescription)")
+                            }
+                        }
+                    }
+
                 }
             
-                
+            case "toSignUp":if var nextViewController = segue.destinationViewController as? SignUpViewController {
+                 nextViewController.delegate = self
+                }
             default:
                 break
         }
 
-        }
+        
         
     }
     
     func showNullAlert(){
-    var alert = UIAlertController(title: "Name Field Is Left Blank", message: "Please enter a name first, and then press continue", preferredStyle: UIAlertControllerStyle.Alert)
+    var alert = UIAlertController(title: "Name or Password Field Is Left Blank", message: "Please enter name and password first, and then press Sign In", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -129,62 +166,5 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
     self.view.endEditing(true)
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        // Most recent updates are appended to end of array,
-        // so find the most recent update in last index.
-        var loc : CLLocation = locations?[locations.count - 1] as CLLocation
-        
-        // The location stored as a coordinate.
-        var coord : CLLocationCoordinate2D = loc.coordinate
-        
-        // Set the coordinates of location.
-        self.myLatitude = coord.latitude
-        self.myLongitude = coord.longitude
-        // Tell location manager to stop collecting and updating location.
-        self.locationManager.stopUpdatingLocation()
-        
-        //Setting other variables in the PFObject
-        
-        
-        let deviceID =  IdentityGenerator()
-        
-        self.myID = deviceID.identifierForVendor.UUIDString as String
-        verifyAndRegisterDevice(deviceID: self.myID)
-        
-    }
 
-    func verifyAndRegisterDevice(deviceID ID:String!) -> Void{
-    
-        var addLocation : PFObject = PFObject(className: "PeopleLocation")
-        
-        var query : PFQuery = PFQuery(className: "PeopleLocation")
-        query.findObjectsInBackgroundWithBlock({ (objects :[AnyObject]!, error : NSError!) -> Void in
-            if error == nil {
-                for object in objects
-                {
-                    //Logic if the MacID is found
-                    if((object.objectForKey("DeviceID") as? String) == ID)
-                    {
-                        addLocation = object as PFObject
-                        addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
-                        addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
-                        
-                        self.myObject = addLocation
-                        addLocation.saveInBackground()
-                        return
-                    }
-                }
-                
-                //Logic if the registered MacID is not found
-                println(ID+" "+self.myLatitude.description+self.myLongitude.description)
-                addLocation["DeviceID"] = ID
-                addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
-                addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
-                
-                self.myObject = addLocation
-                addLocation.saveInBackground()
-                
-            }
-        })
-    }
 }

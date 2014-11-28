@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1486674C1A2809B2005FF5A2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1486674B1A2809B2005FF5A2 /* SignUpViewController.swift */; };
 		149082A41A0EE2B40028BB04 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149082A31A0EE2B40028BB04 /* FacebookSDK.framework */; };
 		14B87B0B19ECC3CD00CAF979 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */; };
 		14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1486674B1A2809B2005FF5A2 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		149082A31A0EE2B40028BB04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Help-Bridging-Header.h"; sourceTree = "<group>"; };
 		14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */,
 				B4CDC17519E9B3B70007A966 /* IdentityGenerator.swift */,
 				14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */,
+				1486674B1A2809B2005FF5A2 /* SignUpViewController.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				738EE64E19EB808F00B06DA8 /* UserInfo.swift in Sources */,
 				B4F384C219EB076C0047AAF6 /* TableViewCell.swift in Sources */,
 				B4F384C419EC726C0047AAF6 /* AddMessageViewController.swift in Sources */,
+				1486674C1A2809B2005FF5A2 /* SignUpViewController.swift in Sources */,
 				B4F487D019EAF0C500D5C582 /* InitializationViewController.swift in Sources */,
 				B4CDC17619E9B3B70007A966 /* IdentityGenerator.swift in Sources */,
 			);
