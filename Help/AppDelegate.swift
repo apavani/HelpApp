@@ -18,14 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.setApplicationId("7GKsJgiKnWJnc1QtHFVkqs4haI6VDqsr4q5CGIhg", clientKey : "94Q9sXMgJ3oZSLbjxXV1ae8gk5aFIOiXlNg8BYUU")
-        FBLoginView.self
-        FBProfilePictureView.self
+     //   FBLoginView.self
+      //  FBProfilePictureView.self
         return true
     }
 
+    
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
-    var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-    return wasHandled
+        // var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        // return wasHandled
+        return true
     }
     
     func applicationWillResignActive(application: UIApplication) {

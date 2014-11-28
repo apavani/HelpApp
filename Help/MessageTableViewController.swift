@@ -50,7 +50,7 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("startUpdatingLocation"), userInfo: nil, repeats: false)
     }
     
@@ -113,14 +113,19 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
                                 updateCount = object as PFObject
                                 updateCount["oldCount"] = oldCount
                                 updateCount["newCount"] = newCount
-                                updateCount.saveInBackground()
+                                updateCount.saveInBackgroundWithBlock({ (success: Bool!, eror: NSError!) -> Void in
+                                    print("saving updatedCount")
+                                })
                             }
                             else
                             {
                                 var updateCount : PFObject = PFObject(className: "PeopleLocation")
                                 updateCount = object as PFObject
                                 updateCount["oldCount"] = object.objectForKey("newCount") as Int
-                                updateCount.saveInBackground()
+                                updateCount.saveInBackgroundWithBlock({ (success: Bool!, eror: NSError!) -> Void in
+                                    print("saving updatedCount")
+                                })
+
                             }
                             
                             var newUser : UserInfo = UserInfo(name: userName, macID: userMacID, distance: distance, timeStamp: messageTimeStamp, messageText: userMessage, latitude: object.objectForKey("Latitude") as Float, longitude: object.objectForKey("Longitude") as Float, oldCount : oldCount, newCount : newCount)
@@ -295,7 +300,9 @@ class MessageTableViewController: UITableViewController, UITableViewDataSource, 
                         addLocation["Latitude"] = (self.myLatitude.description as NSString).floatValue
                         addLocation["Longitude"] = (self.myLongitude.description as NSString).floatValue
                         
-                        addLocation.saveInBackground()
+                        addLocation.saveInBackgroundWithBlock({ (success:Bool!, error:NSError!) -> Void in
+                            //Done
+                        })
                         return
                     }
                 }

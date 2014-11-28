@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1486674C1A2809B2005FF5A2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1486674B1A2809B2005FF5A2 /* SignUpViewController.swift */; };
-		149082A41A0EE2B40028BB04 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149082A31A0EE2B40028BB04 /* FacebookSDK.framework */; };
 		14B87B0B19ECC3CD00CAF979 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */; };
 		14D6329219E0AE1D00FADF88 /* Calculate_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */; };
-		738EE64819EB47E700B06DA8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64519EB47E700B06DA8 /* Parse.framework */; };
-		738EE64919EB47E700B06DA8 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */; };
-		738EE64A19EB47E700B06DA8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738EE64719EB47E700B06DA8 /* Bolts.framework */; };
+		7310F0C61A284E320087441B /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7310F0C51A284E320087441B /* Firebase.framework */; };
+		7310F0CC1A284E4D0087441B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7310F0C81A284E4D0087441B /* Parse.framework */; };
+		7310F0CD1A284E4D0087441B /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7310F0C91A284E4D0087441B /* ParseFacebookUtils.framework */; };
+		7310F0CE1A284E4D0087441B /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7310F0CA1A284E4D0087441B /* ParseUI.framework */; };
+		7310F0CF1A284E4D0087441B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7310F0CB1A284E4D0087441B /* Bolts.framework */; };
+		7310F0D11A284E5E0087441B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7310F0D01A284E5E0087441B /* libc++.dylib */; };
+		7310F0D31A284E6A0087441B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7310F0D21A284E6A0087441B /* libicucore.dylib */; };
+		7310F0D51A284FF20087441B /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 7310F0D41A284FF20087441B /* FBMissingSymbols.m */; };
 		738EE64E19EB808F00B06DA8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EE64D19EB808F00B06DA8 /* UserInfo.swift */; };
 		73F7C2DB19EB452C003123C8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCC8F619E0AF0A00AAC670 /* QuartzCore.framework */; };
 		B4336CA819D8BBA800979946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4336CA719D8BBA800979946 /* AppDelegate.swift */; };
@@ -49,13 +53,17 @@
 
 /* Begin PBXFileReference section */
 		1486674B1A2809B2005FF5A2 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		149082A31A0EE2B40028BB04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Help-Bridging-Header.h"; sourceTree = "<group>"; };
 		14B87B0A19ECC3CD00CAF979 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		14D6329119E0AE1D00FADF88 /* Calculate_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate_Distance.swift; sourceTree = "<group>"; };
-		738EE64519EB47E700B06DA8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		738EE64719EB47E700B06DA8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		7310F0C51A284E320087441B /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = ../Firebase.framework; sourceTree = "<group>"; };
+		7310F0C81A284E4D0087441B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		7310F0C91A284E4D0087441B /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		7310F0CA1A284E4D0087441B /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		7310F0CB1A284E4D0087441B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		7310F0D01A284E5E0087441B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		7310F0D21A284E6A0087441B /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		7310F0D41A284FF20087441B /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMissingSymbols.m; sourceTree = "<group>"; };
 		738EE64D19EB808F00B06DA8 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		B4336CA219D8BBA800979946 /* Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4336CA619D8BBA800979946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,20 +95,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7310F0D31A284E6A0087441B /* libicucore.dylib in Frameworks */,
+				7310F0D11A284E5E0087441B /* libc++.dylib in Frameworks */,
+				7310F0CF1A284E4D0087441B /* Bolts.framework in Frameworks */,
 				B4DCC8F919E0AF1400AAC670 /* Security.framework in Frameworks */,
 				73F7C2DB19EB452C003123C8 /* QuartzCore.framework in Frameworks */,
-				738EE64919EB47E700B06DA8 /* ParseFacebookUtils.framework in Frameworks */,
+				7310F0CE1A284E4D0087441B /* ParseUI.framework in Frameworks */,
+				7310F0C61A284E320087441B /* Firebase.framework in Frameworks */,
 				B4DCC8F519E0AF0000AAC670 /* MobileCoreServices.framework in Frameworks */,
 				B4DCC8F319E0AEF400AAC670 /* libz.dylib in Frameworks */,
 				B4DCC8EB19E0AEA400AAC670 /* CoreLocation.framework in Frameworks */,
 				B4DCC8F119E0AEDA00AAC670 /* CoreGraphics.framework in Frameworks */,
-				738EE64A19EB47E700B06DA8 /* Bolts.framework in Frameworks */,
-				738EE64819EB47E700B06DA8 /* Parse.framework in Frameworks */,
 				B4DCC8EF19E0AECF00AAC670 /* CFNetwork.framework in Frameworks */,
 				B4DCC8FD19E0AF2700AAC670 /* SystemConfiguration.framework in Frameworks */,
 				B4DCC8FB19E0AF1E00AAC670 /* StoreKit.framework in Frameworks */,
+				7310F0CC1A284E4D0087441B /* Parse.framework in Frameworks */,
 				B4DCC8ED19E0AEB500AAC670 /* AudioToolbox.framework in Frameworks */,
-				149082A41A0EE2B40028BB04 /* FacebookSDK.framework in Frameworks */,
+				7310F0CD1A284E4D0087441B /* ParseFacebookUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,22 +125,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		738EE64419EB47E700B06DA8 /* parse-library-1.4.1 */ = {
+		7310F0C71A284E4D0087441B /* parse-library-1.5.0 */ = {
 			isa = PBXGroup;
 			children = (
-				738EE64519EB47E700B06DA8 /* Parse.framework */,
-				738EE64619EB47E700B06DA8 /* ParseFacebookUtils.framework */,
-				738EE64719EB47E700B06DA8 /* Bolts.framework */,
+				7310F0C81A284E4D0087441B /* Parse.framework */,
+				7310F0C91A284E4D0087441B /* ParseFacebookUtils.framework */,
+				7310F0CA1A284E4D0087441B /* ParseUI.framework */,
+				7310F0CB1A284E4D0087441B /* Bolts.framework */,
 			);
-			name = "parse-library-1.4.1";
-			path = "../../Downloads/parse-library-1.4.1";
+			name = "parse-library-1.5.0";
+			path = "../parse-library-1.5.0";
 			sourceTree = "<group>";
 		};
 		B4336C9919D8BBA800979946 = {
 			isa = PBXGroup;
 			children = (
-				149082A31A0EE2B40028BB04 /* FacebookSDK.framework */,
-				738EE64419EB47E700B06DA8 /* parse-library-1.4.1 */,
+				7310F0D41A284FF20087441B /* FBMissingSymbols.m */,
+				7310F0D21A284E6A0087441B /* libicucore.dylib */,
+				7310F0D01A284E5E0087441B /* libc++.dylib */,
+				7310F0C71A284E4D0087441B /* parse-library-1.5.0 */,
+				7310F0C51A284E320087441B /* Firebase.framework */,
 				14B5F1F719E0DDB600C8B826 /* Help-Bridging-Header.h */,
 				B4DCC8FC19E0AF2700AAC670 /* SystemConfiguration.framework */,
 				B4DCC8FA19E0AF1E00AAC670 /* StoreKit.framework */,
@@ -310,6 +325,7 @@
 				B4F384C419EC726C0047AAF6 /* AddMessageViewController.swift in Sources */,
 				1486674C1A2809B2005FF5A2 /* SignUpViewController.swift in Sources */,
 				B4F487D019EAF0C500D5C582 /* InitializationViewController.swift in Sources */,
+				7310F0D51A284FF20087441B /* FBMissingSymbols.m in Sources */,
 				B4CDC17619E9B3B70007A966 /* IdentityGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,9 +456,12 @@
 					"/Users/liqihui/Downloads/parse-library-1.4.0",
 					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.4.1",
 					/Users/liqihui/Documents/FacebookSDK,
+					/afs/andrew.cmu.edu/usr12/apavani/Downloads,
+					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.5.0",
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Help-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -460,9 +479,12 @@
 					"/Users/liqihui/Downloads/parse-library-1.4.0",
 					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.4.1",
 					/Users/liqihui/Documents/FacebookSDK,
+					/afs/andrew.cmu.edu/usr12/apavani/Downloads,
+					"/afs/andrew.cmu.edu/usr12/apavani/Downloads/parse-library-1.5.0",
 				);
 				INFOPLIST_FILE = Help/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Help-Bridging-Header.h";
 			};

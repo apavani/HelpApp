@@ -8,11 +8,13 @@
 
 import CoreLocation
 import UIKit
+import Foundation
 
-class InitializationViewController: UIViewController, CLLocationManagerDelegate, FBLoginViewDelegate,SignUpControllerDelegate{
+class InitializationViewController: UIViewController,SignUpControllerDelegate{
     @IBOutlet var name: UITextField!
     @IBOutlet var initializationView: UIView!
-    @IBOutlet var fbLoginView : FBLoginView!
+ //   @IBOutlet var fbLoginView : FBLoginView!
+    @IBOutlet var testingfirebase: UILabel!
 
     @IBOutlet var passwordTextField: UITextField!
     var tap: UITapGestureRecognizer!
@@ -20,15 +22,37 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
     var myID : String!
     //var timer : NSTimer!
     
+  // *** STEP 1: STORE FIREBASE REFERENCES
+    var messagesRef: Firebase!
+    func setupFirebase() {
+        // *** STEP 2: SETUP FIREBASE
+        messagesRef = Firebase(url: "https://helpapp.firebaseio.com/sender")
+        messagesRef.setValue("Do you have data? You'll love Firebase.")
+        // *** STEP 4: RECEIVE MESSAGES FROM FIREBASE
+        messagesRef.observeEventType(.Value, withBlock: { (snapshot) in
+            //let text = snapshot.value as? String
+            let sender = snapshot.value as? String
+            //print(text!+" "+sender!);
+            self.testingfirebase.text = sender
+            /*
+            let message = Message(text: text, sender: sender)
+            self.messages.append(message)
+            self.finishReceivingMessage()
+*/
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-                self.fbLoginView.delegate = self
-        self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
+
+   //     self.fbLoginView.delegate = self
+    //    self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
         //Tap Gesture Recognizer
         self.tap=UITapGestureRecognizer()
         setup()
+        setupFirebase() 
     }
     
 
@@ -39,7 +63,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
         controller.navigationController?.popViewControllerAnimated(true)
     }
     // Facebook Delegate Methods
-    
+    /*
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         println("User Logged In")
     }
@@ -88,7 +112,7 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
     func loginView(loginView : FBLoginView!, handleError:NSError) {
         println("Error: \(handleError.localizedDescription)")
     }
-
+*/
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -126,7 +150,9 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
                                 // Do stuff after successful login.
                                 self.myObject = PFObject(className: "PeopleLocation")
                                 self.myObject["Name"]=user.username
-                                self.myObject.saveInBackground()
+                                self.myObject.saveInBackgroundWithBlock({ (success:Bool!, error:NSError!) -> Void in
+                                    //Done
+                                })
 
                                 nextViewController.myID = self.myID
                             } else {
@@ -144,9 +170,6 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
             default:
                 break
         }
-
-        
-        
     }
     
     func showNullAlert(){
@@ -165,6 +188,6 @@ class InitializationViewController: UIViewController, CLLocationManagerDelegate,
     {
     self.view.endEditing(true)
     }
+}
     
 
-}
